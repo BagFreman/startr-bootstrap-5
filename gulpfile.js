@@ -36,10 +36,7 @@ let paths = {
 }
 
 const { src, dest, parallel, series, watch } = require('gulp');
-const sass = require('gulp-sass');
-const scss = require('gulp-sass');
-const less = require('gulp-less');
-const styl = require('gulp-stylus');
+const sass = require('gulp-sass')(require('sass'));
 const cleancss = require('gulp-clean-css');
 const concat = require('gulp-concat');
 const browserSync = require('browser-sync').create();
@@ -119,4 +116,4 @@ exports.scripts = scripts;
 exports.images = images;
 exports.cleanimg = cleanimg;
 exports.deploy = deploy;
-exports.default = parallel(images, styles, scripts, browsersync, startwatch);
+exports.default = parallel(images, styles, scripts, browsersync, startwatch,);
