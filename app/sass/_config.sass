@@ -5,11 +5,7 @@
 @import 'node_modules/bootstrap/scss/utilities/_api.scss'
 
 // Fonts
-$font-black: "CoreSansC-95Black", sans-serif, Arial
-$font-bold: "CoreSansC-65Bold", sans-serif, Arial
-$font-light: "CoreSansC-35Light", sans-serif, Arial
-$font-medium: "CoreSansC-55Medium", sans-serif, Arial
-$font-regular: "CoreSansC-45Regular", sans-serif, Arial
+$font: "CoreSansC-95Black", sans-serif, Arial
 
 @mixin font($fname, $fstyle, $fweight, $furl)
 	@font-face
@@ -19,32 +15,30 @@ $font-regular: "CoreSansC-45Regular", sans-serif, Arial
 		src: local($fname), url($furl) format('woff2')
 
 @include font('CoreSansC-45Regular', normal, 400, '../fonts/CoreSansC-45Regular.woff2')
-@include font('CoreSansC-95Black', normal, 400, '../fonts/CoreSansC-95Black.woff2')
-@include font('CoreSansC-65Bold', normal, 400, '../fonts/CoreSansC-65Bold.woff2')
-@include font('CoreSansC-35Light', normal, 400, '../fonts/CoreSansC-35Light.woff2')
-@include font('CoreSansC-55Medium', normal, 400, '../fonts/CoreSansC-55Medium.woff2')
-
-$root-font-size: 16px
+@include font('CoreSansC-45Regular', normal, 400, '../fonts/CoreSansC-95Black.woff2')
+@include font('CoreSansC-45Regular', normal, 400, '../fonts/CoreSansC-65Bold.woff2')
+@include font('CoreSansC-45Regular', normal, 400, '../fonts/CoreSansC-35Light.woff2')
+@include font('CoreSansC-45Regular', normal, 400, '../fonts/CoreSansC-55Medium.woff2')
 
 // Color
 $green: #00C652
 
 // CSS
 html
-	font-size: $root-font-size
+	font-size: 10px
 
 body
 	background-color: #fff
 	overflow-x: hidden
 	font-family: $font-regular
-	font-size: rem(16px)
-	min-width: rem(320px)
+	font-size: 1.6rem
+	min-width: 32rem
 	color: #000
 
 p, ul, li, table, label, h1, h2, h3, h4, h5
 	margin: 0
 	padding: 0
-	font-size: rem(16px)
+	font-size: 1.6rem
 
 ul li
 	list-style-type: none
@@ -63,12 +57,9 @@ a
 		text-decoration: none
 		color: inherit
 
-@mixin img-responsive()
+@mixin img-resp()
 	width: 100%
 	height: 100%
 
 @mixin tr()
 	transition: all .3s ease-in-out
-
-@function rem($size)
-	@return calc($size / $root-font-size * 1rem)
