@@ -15,10 +15,10 @@ $font: "CoreSansC-95Black", sans-serif, Arial
 		src: local($fname), url($furl) format('woff2')
 
 @include font('CoreSansC-45Regular', normal, 400, '../fonts/CoreSansC-45Regular.woff2')
-@include font('CoreSansC-45Regular', normal, 400, '../fonts/CoreSansC-95Black.woff2')
-@include font('CoreSansC-45Regular', normal, 400, '../fonts/CoreSansC-65Bold.woff2')
-@include font('CoreSansC-45Regular', normal, 400, '../fonts/CoreSansC-35Light.woff2')
-@include font('CoreSansC-45Regular', normal, 400, '../fonts/CoreSansC-55Medium.woff2')
+@include font('CoreSansC-45Regular', normal, 800, '../fonts/CoreSansC-95Black.woff2')
+@include font('CoreSansC-45Regular', normal, 700, '../fonts/CoreSansC-65Bold.woff2')
+@include font('CoreSansC-45Regular', normal, 300, '../fonts/CoreSansC-35Light.woff2')
+@include font('CoreSansC-45Regular', normal, 500, '../fonts/CoreSansC-55Medium.woff2')
 
 // Color
 $green: #00C652
@@ -30,7 +30,7 @@ html
 body
 	background-color: #fff
 	overflow-x: hidden
-	font-family: $font-regular
+	font-family: $font
 	font-size: 1.6rem
 	min-width: 32rem
 	color: #000
