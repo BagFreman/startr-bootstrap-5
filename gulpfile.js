@@ -1,4 +1,4 @@
-let preprocessor = 'sass',
+let preprocessor = 'scss',
 	fileswatch = 'html,htm,txt,json,md,woff2',
 	imageswatch = 'jpg,jpeg,png,webp,svg',
 	baseDir = 'app',
@@ -36,7 +36,7 @@ let paths = {
 }
 
 const { src, dest, parallel, series, watch } = require('gulp');
-const sass = require('gulp-sass')(require('sass'));
+const scss = require('gulp-sass')(require('sass'));
 const cleancss = require('gulp-clean-css');
 const concat = require('gulp-concat');
 const browserSync = require('browser-sync').create();
