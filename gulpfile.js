@@ -1,6 +1,5 @@
 let preprocessor = 'scss',
 	fileswatch = 'html,htm,txt,json,md,woff2',
-	imageswatch = 'jpg,jpeg,png,webp,svg',
 	baseDir = 'app',
 	online = true;
 
@@ -16,11 +15,6 @@ let paths = {
 	styles: {
 		src: baseDir + '/' + preprocessor + '/main.*',
 		dest: baseDir + '/css',
-	},
-
-	images: {
-		src: baseDir + '/images/src/**/*',
-		dest: baseDir + '/images/dest',
 	},
 
 	deploy: {
@@ -42,7 +36,6 @@ const concat = require('gulp-concat');
 const browserSync = require('browser-sync').create();
 const uglify = require('gulp-uglify-es').default;
 const autoprefixer = require('gulp-autoprefixer');
-const imagemin = require('gulp-imagemin');
 const newer = require('gulp-newer');
 const rsync = require('gulp-rsync');
 const del = require('del');
@@ -76,17 +69,6 @@ function styles() {
 		.pipe(browserSync.stream())
 }
 
-function images() {
-	return src(paths.images.src)
-		.pipe(newer(paths.images.dest))
-		.pipe(imagemin())
-		.pipe(dest(paths.images.dest))
-}
-
-function cleanimg() {
-	return del('' + paths.images.dest + '/**/*', { force: true })
-}
-
 function deploy() {
 	return src(baseDir + '/')
 		.pipe(rsync({
@@ -104,16 +86,13 @@ function deploy() {
 
 function startwatch() {
 	watch(baseDir + '/**/' + preprocessor + '/**/*', styles);
-	watch(baseDir + '/**/*.{' + imageswatch + '}', images);
 	watch(baseDir + '/**/*.{' + fileswatch + '}').on('change', browserSync.reload);
 	watch([baseDir + '/**/*.js', '!' + paths.scripts.dest + '/*.min.js'], scripts);
 }
 
 exports.browsersync = browsersync;
-exports.assets = series(cleanimg, styles, scripts, images);
+exports.assets = series(styles, scripts);
 exports.styles = styles;
 exports.scripts = scripts;
-exports.images = images;
-exports.cleanimg = cleanimg;
 exports.deploy = deploy;
-exports.default = parallel(images, styles, scripts, browsersync, startwatch,);
+exports.default = parallel(styles, scripts, browsersync, startwatch);
